@@ -15,40 +15,6 @@ export const CustomSlider = ({children}) => {
         sliderRef.current.slickPrev()
         }
 
-        const CustomPrevArrow = (props) => {
-            return (
-              <ArrowCircleLeftIcon
-                onClick={handleBack}
-                style={{
-                  /* Add your custom styles for the previous arrow here */
-                  fontSize: '3rem',
-                  position: 'absolute',
-                  top: '-20%',
-                  left: '5%',
-                  zIndex: 1,
-                  cursor: 'pointer',
-                }}
-              />
-            );
-          };
-        
-          const CustomNextArrow = (props) => {
-            return (
-              <ArrowCircleRightIcon
-                onClick={handleNext}
-                style={{
-                  /* Add your custom styles for the next arrow here */
-                  fontSize: '3rem',
-                  position: 'absolute',
-                  top: '-20%',
-                  right: '5%',
-                  zIndex: 1,
-                  cursor: 'pointer',
-                }}
-              />
-            );
-          };
-
     const settings = {
         className: "center",
         centerMode: true,
@@ -56,7 +22,6 @@ export const CustomSlider = ({children}) => {
         centerPadding: '1em',
         slidesToShow: 6,
         speed: 500,
-        cssEase: "linear",
         cssEase: "linear",
         css: {
           padding: "20px",

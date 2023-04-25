@@ -1,6 +1,5 @@
-import React, { useState, useEffect} from 'react'
-import { ClassSpecificInfo, titleCase, createSpace } from './ClassSpecificInfo'
-import { getClassLevel } from '../utils/classApi'
+import React, { useState } from 'react'
+import { ClassSpecificInfo } from './ClassSpecificInfo'
 import { FormControl, MenuItem, Select, InputLabel, Typography, Box, Button } from '@mui/material';
 import { CustomModal } from './CustomModal';
 import { CustomPopover } from './CustomPopover';
@@ -11,15 +10,6 @@ export const LevelDropdown = ({classLevels}) => {
     const [modalOpen, setModalOpen] = useState(false)
     const [selectedFeature, setSelectedFeature] = useState(null)
     const [anchorEl, setAnchorEl] = useState(null);
-
-
-      const renderValue = (selected) => {
-        if (!selected || !selected.level) {
-          return <strong>Select Level</strong>;
-        }
-    
-        return `Level ${selected.level}`;
-      };
 
       const fetchFeatureData = async (featureUrl) => {
         const response = await fetch(`https://www.dnd5eapi.co${featureUrl}`);

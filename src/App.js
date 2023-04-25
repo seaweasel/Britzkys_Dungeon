@@ -16,6 +16,7 @@ import { AbilityScores } from './views/AbilityScores';
 import AlignmentTable from './views/AlignmentTable'; 
 import combinedTheme from './theme/theme';
 import { UpdateCharacter } from './views/UpdateCharacter';
+import { Test } from './views/Test';
 
 
 
@@ -43,6 +44,7 @@ function App() {
                 <Route path="/abilityscores" element={<AbilityScores />} />
                 <Route path="/backgrounds" element={<Backgrounds />} />
                 <Route path="/updatecharacter" element={<UpdateCharacter />} />
+                <Route path="/test" element={<Test />} />
             </Routes>
           </BrowserRouter>
         </CharacterProvider>

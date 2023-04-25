@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Table, TableBody, TableRow, TableCell, Typography, Box } from '@mui/material';
+import { Table, TableBody, TableRow, TableCell, Box } from '@mui/material';
 import { getRaceImage } from '../utils/getImage';
 import ImagePaper from './ImagePaper'
 import TraitAccordions from './TraitAccordions';

@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router-dom';
 export default function CharacterCards({character}) {
   console.log('CharacterCards character:', character);
   const { authUser } = useAuth()
-  const { updateCharacter, removeCharacter } = useCharacter()
+  const { updateCharacter } = useCharacter()
   const userId = authUser.uid;
   const [updateName, setUpdateName] = useState(false)
   const [imageUrl, setImageUrl] = useState("")
