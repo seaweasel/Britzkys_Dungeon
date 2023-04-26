@@ -128,9 +128,14 @@ export default function AlignmentTable() {
                       right: 0,
                       left: 0,
                       bottom: 0
-                    
                     }}
                   >
+                    <ResponsiveTypography
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'center'
+                    }}
+                    >{item.title}</ResponsiveTypography>
                 </Box>
                 </Box>
                 <Box

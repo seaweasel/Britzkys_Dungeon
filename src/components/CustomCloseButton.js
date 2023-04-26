@@ -1,23 +1,32 @@
-import React from 'react'
-import { Grid, IconButton } from '@mui/material'
-import CancelIcon from '@mui/icons-material/Cancel'
+import React from 'react';
+import { Grid, IconButton, Box } from '@mui/material';
+import CancelIcon from '@mui/icons-material/Cancel';
 
-export const CustomCloseButton = ({onClose, children}) => {
-  return ( 
+export const CustomCloseButton = ({ onClose, children }) => {
+  return (
     <Grid container>
-      <Grid item xs={11}>
-        {children}
-      </Grid>
-      <Grid item xs={1} sx={{textAlign: 'right'}}>
-        <IconButton
-          onClick={onClose}
-          color="error"
+      <Grid item xs={11} sm={10} md={11}>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent={{ xs: 'center', sm: 'start', md: 'center' }}
+          width="100%"
         >
-          <CancelIcon fontSize="large" />
-        </IconButton>
+          {children}
+        </Box>
+      </Grid>
+      <Grid item xs={1} sm={2} md={1}>
+        <Box
+          display="flex"
+          alignItems="center"
+          justifyContent="flex-end"
+          width="100%"
+        >
+          <IconButton onClick={onClose} color="error">
+            <CancelIcon fontSize="small" />
+          </IconButton>
+        </Box>
       </Grid>
     </Grid>
-
-
-  )
-}
+  );
+};

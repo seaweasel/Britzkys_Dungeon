@@ -127,45 +127,80 @@ export const Classes = () => {
             <Table>
               <TableBody>
                 <TableRow >
-                  <TableCell component="th" scope="row" align="left">
-                  <ResponsiveTypography type="title">Hit Die: </ResponsiveTypography>
-                  </TableCell>
-                  <TableCell align="right">
-                  <ResponsiveTypography>Constant: {classData.hit_dice}</ResponsiveTypography>
-                  <ResponsiveTypography>First level: {classData.hp_at_1st_level}</ResponsiveTypography>
-                  <ResponsiveTypography>Higher levels: {classData.hp_at_higher_levels}</ResponsiveTypography>
-                  </TableCell>
-                </TableRow>
-                <TableRow >
-                  <TableCell component="th" scope="row" align="left">
-                  <ResponsiveTypography type="title">Armor Proficiencies: </ResponsiveTypography>
-                  </TableCell>
-                  <TableCell align="right">
-                  <ResponsiveTypography>{classData.prof_armor}</ResponsiveTypography>
-                  </TableCell>
-                </TableRow>
-                <TableRow >
-                  <TableCell component="th" scope="row" align="left">
-                  <ResponsiveTypography type="title">Weapon Proficiencies:</ResponsiveTypography>
-                  </TableCell>
-                  <TableCell align="right">
-                  <ResponsiveTypography>{classData.prof_weapons}</ResponsiveTypography>
+                  <TableCell component="th" scope="row" align="center">
+                  <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                  >
+                    <ResponsiveTypography type="title">Hit Die: </ResponsiveTypography>
+                    <ResponsiveTypography>Constant: {classData.hit_dice}</ResponsiveTypography>
+                    <ResponsiveTypography>First level: {classData.hp_at_1st_level}</ResponsiveTypography>
+                    <ResponsiveTypography>Higher levels: {classData.hp_at_higher_levels}</ResponsiveTypography>                  
+                  </Box>
                   </TableCell>
                 </TableRow>
                 <TableRow >
-                  <TableCell component="th" scope="row" align="left">
+                  <TableCell component="th" scope="row" align="center">
+                  <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                  >
+                    <ResponsiveTypography type="title">Armor Proficiencies: </ResponsiveTypography>
+                    <ResponsiveTypography>{classData.prof_armor}</ResponsiveTypography>
+                  </Box>
+                  </TableCell>
+                </TableRow>
+                <TableRow >
+                  <TableCell component="th" scope="row" align="center">
+                  <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                  >
+                    <ResponsiveTypography type="title">Weapon Proficiencies:</ResponsiveTypography>
+                    <ResponsiveTypography>{classData.prof_weapons}</ResponsiveTypography>
+                  </Box>
+                  </TableCell>
+                </TableRow>
+                <TableRow >
+                  <TableCell component="th" scope="row" align="center">
+                  <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                  >
                   <ResponsiveTypography type="title">Equipment:</ResponsiveTypography>
-                  </TableCell>
-                  <TableCell align="right">
                   <ResponsiveTypography>{classData.equipment}</ResponsiveTypography>
+                  </Box>
                   </TableCell>
                 </TableRow>
                 <TableRow >
-                  <TableCell component="th" scope="row" align="left">
+                  <TableCell component="th" scope="row" align="center">
+                  <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                  >
                   <ResponsiveTypography type="title">Level Info: </ResponsiveTypography>
-                  </TableCell>
-                  <TableCell align="right">
                   <LevelDropdown classLevels={classData.levels} />
+                  </Box>
                   </TableCell>
                 </TableRow>           
             </TableBody>

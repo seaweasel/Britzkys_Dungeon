@@ -11,6 +11,7 @@ const headerStyle = {
     margin: '1em',
     display: 'flex',
     justifyContent: 'center',
+    alignItems: 'center',
   };
 
 const theme = createTheme({
@@ -26,15 +27,6 @@ const theme = createTheme({
         },
         warning: {
             main: '#c1121f'
-        },
-    },
-    breakpoints: {
-        values: {
-            xs: 0,
-            sm: 600,
-            md: 959, 
-            lg: 1280,
-            xl: 1920,
         },
     },
     typography: {

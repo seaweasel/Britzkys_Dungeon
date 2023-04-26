@@ -8,12 +8,14 @@ import { CustomModal } from './CustomModal';
 import{ useCharacter } from '../context/CharacterContext'
 import { AddButton } from './AddButton';
 import { ResponsiveTypography } from './ResponsiveTypography';
+import { useTheme } from '@mui/system';
 
 export default function RaceModal({ race, url, fetchRaceInfo, fetchTraitInfo }) {
     const [open, setOpen] = useState(false);
     const [raceInfo, setRaceInfo] = useState(null) // state variable for race information 
     const [raceInfoItems, setRaceInfoItems] = useState([]);
     const [traitsWithInfo, setTraitsWithInfo] = useState([])
+    const theme = useTheme()
 
     const handleOpen = async () => {
         const info = await fetchRaceInfo(url); // Fetch race information by using race.url
@@ -110,16 +112,30 @@ export default function RaceModal({ race, url, fetchRaceInfo, fetchTraitInfo }) 
           {raceInfo && (
             <div> 
               <ResponsiveTypography>
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
               <Table 
                 aria-label={`{race.toLowerCase()}-info`} 
               >
                 <TableBody>
                   {raceInfoItems.map((item, index) => (
                     <TableRow key={index}>
-                      <TableCell component="th" scope="row" align="left">
-                      <ResponsiveTypography type="title">{item.key}:</ResponsiveTypography>
-                      </TableCell>
-                      <TableCell align="right">
+                      <TableCell component="th" scope="row" align="center">
+                        <Box
+                        sx={{
+                          display: 'flex',
+                          flexDirection: 'column',
+                          alignItems: 'center'
+
+                        }}
+                        >
+                        <ResponsiveTypography type="title">{item.key}:</ResponsiveTypography>
+                        </Box>
                       <ResponsiveTypography>
                         {Array.isArray(item.value) ? (
                           <ul style={{textDecoration: 'none'}}>
@@ -151,15 +167,16 @@ export default function RaceModal({ race, url, fetchRaceInfo, fetchTraitInfo }) 
                         ))}
                       </TableBody>
                     </Table>
-                    </ResponsiveTypography>
-                  </div>
-                )}
-          <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            <AddButton onClick={handleAddRace} style={{ marginTop: '2em', display: 'flex', flexDirection: 'column' }}>
-              Add Race
-            </AddButton>
-          </div>
-        </CustomModal>
-    </CenteredColumn>
+                  </Box>  
+                </ResponsiveTypography>
+              </div>
+            )}
+            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+              <AddButton onClick={handleAddRace} style={{ marginTop: '2em', display: 'flex', flexDirection: 'column' }}>
+                Add Race
+              </AddButton>
+            </div>
+          </CustomModal>
+      </CenteredColumn>
   )
 }
