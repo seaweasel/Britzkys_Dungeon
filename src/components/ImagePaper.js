@@ -14,7 +14,7 @@ function ImagePaper({src, alt, onClick, title, width, height}) {
         overflow: 'hidden',
         borderRadius: 2,
         cursor: 'pointer',
-        boxShadow: title ? '1em 1em 1em rgba(0, 0, 0, .7)' : 'none',
+        boxShadow: '1em 1em 1em rgba(0, 0, 0, .7)',
         border: '2px solid black',
         margin: '2em 0'
     }}
@@ -29,10 +29,10 @@ function ImagePaper({src, alt, onClick, title, width, height}) {
             objectFit: 'cover',
         }}
         />
-      <Box
+          <Box
         sx={{
           position: 'absolute',
-          backgroundColor: 'rgba(0, 0, 0, 0.4)',
+          backgroundColor: title? 'rgba(0, 0, 0, 0.4)' : 'none',
           padding: '4px 8px',
           right: 0,
           left: 0,

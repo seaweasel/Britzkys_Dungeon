@@ -13,7 +13,7 @@ export const CustomModal = ({
     ariaDescribedby,
     children,
     title,
-    image
+    image,
 }) => {
 
   return (
@@ -41,7 +41,7 @@ export const CustomModal = ({
             <Box 
             sx={{
               display: 'flex',
-              justifyContent: 'center',
+              justifyContent: 'space-around',
               alignItems: 'center',
               position: 'sticky',
               top: 0,
@@ -54,15 +54,14 @@ export const CustomModal = ({
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
               borderBottom: '2px solid black',
+              marginBottom: 'none',
             }}
             >
-              <Box sx={{width: '100%', display:'flex', justifyContent: 'center'}}>
                 <ImagePaper
-                 height={150}
-                 width={150}
+                 height={100}
+                 width={100}
                  src={image}
-                />
-                </Box>
+                />               
                 <ResponsiveTypography type="title" align="center" id="title">{title}</ResponsiveTypography>
                 <CustomCloseButton onClose={onClose} />
               </Box>

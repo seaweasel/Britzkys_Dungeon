@@ -114,14 +114,11 @@ export const Classes = () => {
       onClose={handleCloseClass}
       aria-labelledby="race-modal-title"
       aria-describedby="race-modal-description"
+      title={classData && classData.name}
+      image={classData && classData.img}
     >
       {classData && (
           <>
-          <Box
-            sx={{display: 'flex', justifyContent: 'center'}}
-          >
-          <ResponsiveTypography type="title">{classData.name}</ResponsiveTypography>
-          </Box>
         <div> 
           <Typography variant="body2">
             <Table>
@@ -207,16 +204,29 @@ export const Classes = () => {
           </Table>
           </Typography>
         </div>           
-        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-          <AddButton onClick={handleAddClass} style={{ marginTop: '2em', display: 'flex', flexDirection: 'column' }}>
+        <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  position: 'sticky',
+                  bottom: 0,
+                  padding: '1em',
+                  borderTop: '2px solid black',
+                  backgroundImage: `
+                  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                  url(/images/modal-background.jpg)`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                }}
+              >          <AddButton onClick={handleAddClass} style={{ marginTop: '2em', display: 'flex', flexDirection: 'column' }}>
             Add Class
           </AddButton>
-        </div>
+        </Box>
         </>
       )}
     </CustomModal>
-  </>
-        
-    
+  </>    
   )
 }

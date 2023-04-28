@@ -72,65 +72,71 @@ export const Backgrounds = () => {
       open={openBackground}
       onClose={handleCloseBackground}
       background={background}
+      image={background && background.img}
+      title={background && background.title}
      >
   {background && (
         <>
-      <Typography variant="h3" align="center">{background.title}</Typography>
         <div> 
-          <Typography variant="body1">
+          <ResponsiveTypography>
             <Table>
               <TableBody>
                 <TableRow >
-                  <TableCell component="th" scope="row" align="left">
-                  <Typography variant="h4">Description:</Typography>
-                  </TableCell>
-                  <TableCell align="right">
-                  <Typography variant="body2">{background.description}</Typography>
+                  <TableCell component="th" scope="row" align="center">
+                  <ResponsiveTypography type='title'>Description:</ResponsiveTypography>
+                  <ResponsiveTypography>{background.description}</ResponsiveTypography>
                   </TableCell>
                 </TableRow>
                 <TableRow >
-                  <TableCell component="th" scope="row" align="left">
-                  <Typography variant="h4">Skill Proficiencies: </Typography>
-                  </TableCell>
-                  <TableCell align="right">
-                  <Typography variant="body2">{background.skillProf}</Typography>
+                  <TableCell component="th" scope="row" align="center">
+                  <ResponsiveTypography type='title'>Skill Proficiencies: </ResponsiveTypography>
+                  <ResponsiveTypography>{background.skillProf}</ResponsiveTypography>
                   </TableCell>
                 </TableRow>
                 <TableRow >
-                  <TableCell component="th" scope="row" align="left">
-                  <Typography variant="h4">Languages:</Typography>
-                  </TableCell>
-                  <TableCell align="right">
-                  <Typography variant="body2">{background.languages}</Typography>
+                  <TableCell component="th" scope="row" align="center">
+                  <ResponsiveTypography type='title'>Languages:</ResponsiveTypography>
+                  <ResponsiveTypography>{background.languages}</ResponsiveTypography>
                   </TableCell>
                 </TableRow>
                 <TableRow >
-                  <TableCell component="th" scope="row" align="left">
-                  <Typography variant="h4">Features:</Typography>
-                  </TableCell>
-                  <TableCell align="right">
-                  <Typography variant="body2">{background.feature}</Typography>
+                  <TableCell component="th" scope="row" align="center">
+                  <ResponsiveTypography type='title'>Features:</ResponsiveTypography>
+                  <ResponsiveTypography>{background.feature}</ResponsiveTypography>
                   </TableCell>
                 </TableRow>
                 <TableRow >
-                  <TableCell component="th" scope="row" align="left">
-                  <Typography variant="h4">Feature Description:</Typography>
-                  </TableCell>
-                  <TableCell align="right">
-                  <Typography variant="body2">{background.featureDescription}</Typography>
+                  <TableCell component="th" scope="row" align="center">
+                  <ResponsiveTypography type='title'>Feature Description:</ResponsiveTypography>
+                  <ResponsiveTypography>{background.featureDescription}</ResponsiveTypography>
                   </TableCell>
                 </TableRow>
             </TableBody>
           </Table>
-          </Typography>
+          </ResponsiveTypography>
         </div>
         </>
          )}
-        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-          <AddButton onClick={handleAddBackground} style={{ marginTop: '2em', display: 'flex', flexDirection: 'column' }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  position: 'sticky',
+                  bottom: 0,
+                  padding: '1em',
+                  borderTop: '2px solid black',
+                  backgroundImage: `
+                  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                  url(/images/modal-background.jpg)`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                }}
+              >          <AddButton onClick={handleAddBackground} style={{ marginTop: '2em', display: 'flex', flexDirection: 'column' }}>
             Choose
           </AddButton>
-        </div>
+        </Box>
         </CustomModal>
   
     </>
