@@ -8,14 +8,12 @@ import { CustomModal } from './CustomModal';
 import{ useCharacter } from '../context/CharacterContext'
 import { AddButton } from './AddButton';
 import { ResponsiveTypography } from './ResponsiveTypography';
-import { useTheme } from '@mui/system';
 
 export default function RaceModal({ race, url, fetchRaceInfo, fetchTraitInfo }) {
     const [open, setOpen] = useState(false);
     const [raceInfo, setRaceInfo] = useState(null) // state variable for race information 
     const [raceInfoItems, setRaceInfoItems] = useState([]);
     const [traitsWithInfo, setTraitsWithInfo] = useState([])
-    const theme = useTheme()
 
     const handleOpen = async () => {
         const info = await fetchRaceInfo(url); // Fetch race information by using race.url
@@ -101,14 +99,11 @@ export default function RaceModal({ race, url, fetchRaceInfo, fetchTraitInfo }) 
         <CustomModal
           open={open}
           onClose={handleClose}
+          title={race}
+          image={raceImageUrl}
           aria-labelledby="race-modal-title"
           aria-describedby="race-modal-description"
         >
-          <Box
-            sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
-          >
-          <ResponsiveTypography type="title" align="center" id="race-modal-title">{race}</ResponsiveTypography>
-          </Box>
           {raceInfo && (
             <div> 
               <ResponsiveTypography>
@@ -171,11 +166,27 @@ export default function RaceModal({ race, url, fetchRaceInfo, fetchTraitInfo }) 
                 </ResponsiveTypography>
               </div>
             )}
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  position: 'sticky',
+                  bottom: 0,
+                  padding: '1em',
+                  borderTop: '2px solid black',
+                  backgroundImage: `
+                  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                  url(/images/modal-background.jpg)`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                }}
+              >
               <AddButton onClick={handleAddRace} style={{ marginTop: '2em', display: 'flex', flexDirection: 'column' }}>
                 Add Race
               </AddButton>
-            </div>
+            </Box>
           </CustomModal>
       </CenteredColumn>
   )

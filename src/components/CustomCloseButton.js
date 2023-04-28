@@ -23,7 +23,7 @@ export const CustomCloseButton = ({ onClose, children }) => {
           width="100%"
         >
           <IconButton onClick={onClose} color="error">
-            <CancelIcon fontSize="small" />
+            <CancelIcon fontSize="medium" />
           </IconButton>
         </Box>
       </Grid>
