@@ -1,9 +1,9 @@
 import React from 'react'
-import { getRaceImage } from '../utils/getImage'
-import { Grid } from '@mui/material'
+import { SpellSearch} from '../components/SpellSearch'
+
 
 export const Test = () => {
   return (
-    <div>Test</div>
+    <SpellSearch />
   )
 }

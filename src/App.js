@@ -17,6 +17,7 @@ import AlignmentTable from './views/AlignmentTable';
 import combinedTheme from './theme/theme';
 import { UpdateCharacter } from './views/UpdateCharacter';
 import { Test } from './views/Test';
+import { ModalProvider } from './context/ModalContext';
 
 
 
@@ -28,25 +29,27 @@ function App() {
     <ThemeProvider theme={combinedTheme}>
       <AuthProvider>
         <CharacterProvider>
-          <BrowserRouter>
-            <CssBaseline />
-            <ResponsiveAppBar />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/signin" element={<SignIn/>} />
-                <Route path="/signup" element={<SignUp/>} />
-                <Route path="/newcharacter" element={<NewCharacter />} />
-                <Route path="/viewcharacters" element={<ViewCharacters />} />
-                <Route path="/logout" element={<SignIn />} />
-                <Route path="/races" element={<Races />}  />
-                <Route path="/classes" element={<Classes />}  />
-                <Route path="/alignmenttable" element={<AlignmentTable />} />
-                <Route path="/abilityscores" element={<AbilityScores />} />
-                <Route path="/backgrounds" element={<Backgrounds />} />
-                <Route path="/updatecharacter" element={<UpdateCharacter />} />
-                <Route path="/test" element={<Test />} />
-            </Routes>
-          </BrowserRouter>
+          <ModalProvider>
+            <BrowserRouter>
+              <CssBaseline />
+              <ResponsiveAppBar />
+              <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/signin" element={<SignIn/>} />
+                  <Route path="/signup" element={<SignUp/>} />
+                  <Route path="/newcharacter" element={<NewCharacter />} />
+                  <Route path="/viewcharacters" element={<ViewCharacters />} />
+                  <Route path="/logout" element={<SignIn />} />
+                  <Route path="/races" element={<Races />}  />
+                  <Route path="/classes" element={<Classes />}  />
+                  <Route path="/alignmenttable" element={<AlignmentTable />} />
+                  <Route path="/abilityscores" element={<AbilityScores />} />
+                  <Route path="/backgrounds" element={<Backgrounds />} />
+                  <Route path="/updatecharacter" element={<UpdateCharacter />} />
+                  <Route path="/test" element={<Test />} />
+              </Routes>
+            </BrowserRouter>
+          </ModalProvider>
         </CharacterProvider>
       </AuthProvider>  
     </ThemeProvider>

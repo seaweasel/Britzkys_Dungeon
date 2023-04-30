@@ -20,7 +20,7 @@ export const CustomSlider = ({children}) => {
         centerMode: true,
         infinite: true,
         centerPadding: '1em',
-        slidesToShow: 6,
+        slidesToShow: 5,
         speed: 500,
         cssEase: "linear",
         css: {
@@ -35,19 +35,36 @@ export const CustomSlider = ({children}) => {
           {
             breakpoint: 1281,
             settings: {
-              slidesToShow: 3
+              slidesToShow: 3,
+              centerMode: true,
+              centerPadding: '1em',
+              cssEase: "linear",
+              css: {
+                padding: "20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              },
             }
           },
           {
             breakpoint: 765,
             settings: {
-              slidesToShow: 1
+              slidesToShow: 1,
+              centerMode: true,
+              centerPadding: '1em',
+              cssEase: "linear",
+              css: {
+                padding: "20px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              },
             }
           }
         ]
       }
-    
-      
+            
   return (
     <>
       <Box
