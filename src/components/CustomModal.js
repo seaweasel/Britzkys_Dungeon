@@ -58,8 +58,10 @@ export const CustomModal = ({
             }}
             >
                 <ImagePaper
-                 height={100}
-                 width={100}
+                 sx={{
+                  height: 100,
+                  width: 100
+                 }}
                  src={image}
                 />               
                 <ResponsiveTypography type="title" align="center" id="title">{title}</ResponsiveTypography>

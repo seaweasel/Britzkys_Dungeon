@@ -2,14 +2,13 @@ import React from 'react'
 import { Paper, Box, Typography } from '@mui/material';
 
 
-function ImagePaper({src, alt, onClick, title, width, height}) {
+function ImagePaper({src, alt, onClick, title, sx}) {
   return (
     <Paper 
     elevation={24} 
     onClick={onClick}
     sx={{
-        width: width,
-        height: height,
+        ...sx,
         position: 'relative',
         overflow: 'hidden',
         borderRadius: 2,

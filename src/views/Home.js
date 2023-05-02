@@ -69,8 +69,15 @@ useEffect(() => {
       <ImagePaper
         src={'./images/home.jpg'} 
         sx={{
-          width: 500,
-          height: 500
+          width: {
+            xs: 350,
+            md: 900
+          },
+          height: {
+            xs: 350,
+            md: 700
+          },
+          objectFit: 'cover',
         }}
         />
     </Box>
