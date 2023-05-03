@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import ImagePaper from '../components/ImagePaper'
-import { Box, Typography, Table, TableBody, TableCell, TableRow } from '@mui/material'
+import { Box, Table, TableBody, TableCell, TableRow } from '@mui/material'
 import { CustomModal } from '../components/CustomModal'
 import { AddButton } from '../components/AddButton'
 import { useCharacter } from '../context/CharacterContext'
 import { ResponsiveTypography } from '../components/ResponsiveTypography'
+import { SnackbarContext } from '../context/SnackbarContext' 
 
 
 export const Backgrounds = () => {
     const [backgrounds, setBackgrounds] = useState([])
     const [background, setBackground] = useState(null)
     const [openBackground, setOpenBackground] = useState(false)
+    const { openSnackbar } = useContext(SnackbarContext)
 
     useEffect(() => {
         const getBackgrounds = async () => {
@@ -45,10 +47,11 @@ export const Backgrounds = () => {
     const handleCloseBackground = () => {
       setOpenBackground(false)
     }
-    const { updateCharacter, character } = useCharacter()
+    const { updateCharacter } = useCharacter()
 
     const handleAddBackground = () => {
       updateCharacter({ background: background })
+      openSnackbar(`${background.name} selected!`, 'success')
       handleCloseBackground()
     }
 

@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../utils/firebase';
-import { TextField, Box, Typography } from '@mui/material';
+import { TextField, Box } from '@mui/material';
 import { AddButton } from '../components/AddButton'
 import { useCharacter } from '../context/CharacterContext';
 import { useAuth } from '../context/AuthContext';
 import { ResponsiveTypography } from '../components/ResponsiveTypography';
+import { SnackbarContext } from '../context/SnackbarContext';
 
 export const CharacterName = () => {
     const [characterName, setCharacterName] = useState('')
     const { authUser } = useAuth()
+    const { openSnackbar } = useContext(SnackbarContext)
 
     const handleCharacterNameChange = (event) => {
         setCharacterName( event.target.value)
@@ -30,6 +32,7 @@ export const CharacterName = () => {
     //if the name is not taken, update the character context
     console.log('Updating Character Context')
     updateCharacter({name: characterName});
+    openSnackbar(`Your characters name is ${characterName}`, 'success')
     setCharacterName('')
 }
   return (

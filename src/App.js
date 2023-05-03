@@ -18,6 +18,8 @@ import combinedTheme from './theme/theme';
 import { UpdateCharacter } from './views/UpdateCharacter';
 import { Test } from './views/Test';
 import { ModalProvider } from './context/ModalContext';
+import { SnackbarProvider } from './context/SnackbarContext';
+import CustomSnackbar from './components/CustomSnackbar';
 
 
 
@@ -30,25 +32,28 @@ function App() {
       <AuthProvider>
         <CharacterProvider>
           <ModalProvider>
-            <BrowserRouter>
-              <CssBaseline />
-              <ResponsiveAppBar />
-              <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/signin" element={<SignIn/>} />
-                  <Route path="/signup" element={<SignUp/>} />
-                  <Route path="/newcharacter" element={<NewCharacter />} />
-                  <Route path="/viewcharacters" element={<ViewCharacters />} />
-                  <Route path="/logout" element={<SignIn />} />
-                  <Route path="/races" element={<Races />}  />
-                  <Route path="/classes" element={<Classes />}  />
-                  <Route path="/alignmenttable" element={<AlignmentTable />} />
-                  <Route path="/abilityscores" element={<AbilityScores />} />
-                  <Route path="/backgrounds" element={<Backgrounds />} />
-                  <Route path="/updatecharacter" element={<UpdateCharacter />} />
-                  <Route path="/test" element={<Test />} />
-              </Routes>
-            </BrowserRouter>
+            <SnackbarProvider>
+              <BrowserRouter>
+                <CssBaseline />
+                <ResponsiveAppBar />
+                <CustomSnackbar />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/signin" element={<SignIn/>} />
+                    <Route path="/signup" element={<SignUp/>} />
+                    <Route path="/newcharacter" element={<NewCharacter />} />
+                    <Route path="/viewcharacters" element={<ViewCharacters />} />
+                    <Route path="/logout" element={<SignIn />} />
+                    <Route path="/races" element={<Races />}  />
+                    <Route path="/classes" element={<Classes />}  />
+                    <Route path="/alignmenttable" element={<AlignmentTable />} />
+                    <Route path="/abilityscores" element={<AbilityScores />} />
+                    <Route path="/backgrounds" element={<Backgrounds />} />
+                    <Route path="/updatecharacter" element={<UpdateCharacter />} />
+                    <Route path="/test" element={<Test />} />
+                </Routes>
+              </BrowserRouter>
+            </SnackbarProvider>
           </ModalProvider>
         </CharacterProvider>
       </AuthProvider>  

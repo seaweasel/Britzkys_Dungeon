@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Table, TableBody, TableRow, TableCell, Typography, Box } from '@mui/material';
 import { CenteredBox } from '../components/CustomBoxes'
 import { useAuth } from '../context/AuthContext'
@@ -11,6 +11,7 @@ import { AddButton } from '../components/AddButton';
 import { CustomModal } from '../components/CustomModal';
 import { LevelDropdown } from '../components/LevelDropdown';
 import { ResponsiveTypography } from '../components/ResponsiveTypography';
+import { SnackbarContext } from '../context/SnackbarContext';
 
 
 
@@ -20,7 +21,9 @@ export const Classes = () => {
   const [skills, setSkills] = useState([])
   const [classItems, setClassItems] = useState([])
   const [classData, setClassData] = useState(null)
-  const { updateCharacter, character } = useCharacter()
+  const { updateCharacter } = useCharacter()
+  const { openSnackbar } = useContext(SnackbarContext)
+
   
   const { authUser } = useAuth();
   const navigate = useNavigate();
@@ -87,6 +90,7 @@ export const Classes = () => {
 
     const handleAddClass = () => {
       updateCharacter({ class: classData });
+      openSnackbar(`${classData.name} selected!`, 'success')
       handleCloseClass();
     };
   return (

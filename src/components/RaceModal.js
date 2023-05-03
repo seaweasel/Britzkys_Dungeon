@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Table, TableBody, TableRow, TableCell, Box } from '@mui/material';
 import { getRaceImage } from '../utils/getImage';
 import ImagePaper from './ImagePaper'
@@ -8,12 +8,14 @@ import { CustomModal } from './CustomModal';
 import{ useCharacter } from '../context/CharacterContext'
 import { AddButton } from './AddButton';
 import { ResponsiveTypography } from './ResponsiveTypography';
+import { SnackbarContext } from '../context/SnackbarContext';
 
 export default function RaceModal({ race, url, fetchRaceInfo, fetchTraitInfo }) {
     const [open, setOpen] = useState(false);
     const [raceInfo, setRaceInfo] = useState(null) // state variable for race information 
     const [raceInfoItems, setRaceInfoItems] = useState([]);
     const [traitsWithInfo, setTraitsWithInfo] = useState([])
+    const { openSnackbar } = useContext(SnackbarContext)
 
     const handleOpen = async () => {
         const info = await fetchRaceInfo(url); // Fetch race information by using race.url
@@ -57,7 +59,7 @@ export default function RaceModal({ race, url, fetchRaceInfo, fetchTraitInfo }) 
         setOpen(false);
     };
 
-    const { updateCharacter, character } = useCharacter()
+    const { updateCharacter } = useCharacter()
 
     // function to get the ability score modifier 
     const modifier = (abilityScore) => {
@@ -69,6 +71,9 @@ export default function RaceModal({ race, url, fetchRaceInfo, fetchTraitInfo }) 
     const handleAddRace = () => {
       // Update the character context with the new race and its details
       updateCharacter({ race: race, raceDetails: raceInfo });
+
+      //open the Snackbar with a success message
+      openSnackbar(`${race} selected!`, 'success')
       handleClose();
     };
     

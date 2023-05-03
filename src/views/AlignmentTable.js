@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Typography, Box, ImageListItemBar, ImageListItem, ImageList } from '@mui/material';
+import React, { useState, useEffect, useContext } from 'react';
+import { Typography, Box, ImageListItem, ImageList } from '@mui/material';
 import { getAlignment } from '../utils/alignmentApi';
 import { AddButton } from '../components/AddButton';
 import { useCharacter } from '../context/CharacterContext';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { ResponsiveTypography } from '../components/ResponsiveTypography';
+import { SnackbarContext } from '../context/SnackbarContext';
 
 
 export default function AlignmentTable() {
@@ -14,6 +15,7 @@ export default function AlignmentTable() {
   const [flippedImage, setFlippedImage] = useState(null)
   const [selectedAlignment, setSelectedAlignment] = useState(null);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const { openSnackbar } = useContext(SnackbarContext)
   
   const medium = useMediaQuery(theme.breakpoints.down('md'))
   const small = useMediaQuery(theme.breakpoints.between('xs', 'sm'))
@@ -40,6 +42,7 @@ export default function AlignmentTable() {
   const handleAddAlignment = async () => {
     if (selectedAlignment) {
       updateCharacter({alignment: selectedAlignment });
+      openSnackbar(`${selectedAlignment.name} selected!`, 'success' )
       setIsButtonDisabled(true); // Disable the button after updating the character
     }
   };
