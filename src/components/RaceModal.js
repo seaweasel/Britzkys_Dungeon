@@ -83,7 +83,7 @@ export default function RaceModal({ race, url, fetchRaceInfo, fetchTraitInfo }) 
         alignItems: 'center',
         flexDirection: 'column',
          }}>
-      <ImagePaper {...props} />
+      <ImagePaper {...props} sx={{height:300, width: 300}} />
 
     </div>
     );

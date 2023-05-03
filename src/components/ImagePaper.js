@@ -8,6 +8,8 @@ function ImagePaper({src, alt, onClick, title, sx}) {
     elevation={24} 
     onClick={onClick}
     sx={{
+        height: 300,
+        width: 300,
         ...sx,
         position: 'relative',
         overflow: 'hidden',
@@ -46,9 +48,6 @@ function ImagePaper({src, alt, onClick, title, sx}) {
   )
 }
 
-ImagePaper.defaultProps = {
-  width: 300,
-  height: 300,
-}
+
 
 export default ImagePaper
