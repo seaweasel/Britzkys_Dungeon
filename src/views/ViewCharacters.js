@@ -59,8 +59,6 @@ export const ViewCharacters = () => {
         {characterData &&
           characterData.map((character) => (
             <>
-              {console.log('ViewCharacters character:', character)}
-
               <CharacterCards character={character} />
             </>
           ))}

@@ -20,6 +20,7 @@ import { Test } from './views/Test';
 import { ModalProvider } from './context/ModalContext';
 import { SnackbarProvider } from './context/SnackbarContext';
 import CustomSnackbar from './components/CustomSnackbar';
+import { CharacterSheet } from './views/CharacterSheet';
 
 
 
@@ -50,6 +51,7 @@ function App() {
                     <Route path="/abilityscores" element={<AbilityScores />} />
                     <Route path="/backgrounds" element={<Backgrounds />} />
                     <Route path="/updatecharacter" element={<UpdateCharacter />} />
+                    <Route path="/charactersheet/:characterId" element={<CharacterSheet />} />
                     <Route path="/test" element={<Test />} />
                 </Routes>
               </BrowserRouter>

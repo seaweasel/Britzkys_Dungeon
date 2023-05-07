@@ -14,7 +14,6 @@ import ImagePaper from './ImagePaper';
 import { useNavigate } from 'react-router-dom';
 
 export default function CharacterCards({character}) {
-  console.log('CharacterCards character:', character);
   const { authUser } = useAuth()
   const { updateCharacter } = useCharacter()
   const userId = authUser.uid;
@@ -104,6 +103,10 @@ const cancelUpdateName = () => {
     setCard(false)
   }
 
+  const handleSelectButton = () => {
+    navigate('/charactersheet/${character.id}')
+  }
+
   return (
     <>
     {updateName ? (
@@ -138,7 +141,7 @@ const cancelUpdateName = () => {
      ))}
    </CardContent>
    <CardActions>
-     <Button 
+      <Button 
        size="small"
        onClick={() => {
         handleNameChange();
@@ -149,8 +152,10 @@ const cancelUpdateName = () => {
            backgroundColor: '#669bbc'
          } 
        }}
-     >Change Name</Button>
-     <Button 
+      >
+      Change Name
+      </Button>
+      <Button 
        size="small"
        onClick={() => handleDeleteCharacter(character)}
        sx={{
@@ -159,8 +164,10 @@ const cancelUpdateName = () => {
            backgroundColor: '#c1121f'
          } 
        }}
-     >Delete</Button>
-         <Button 
+      >
+      Delete
+      </Button>
+      <Button 
        size="small"
        onClick={handleBackButton}
        sx={{
@@ -169,7 +176,19 @@ const cancelUpdateName = () => {
            backgroundColor: '#669bbc'
          } 
        }}
-     >Back</Button>
+      >
+      Back
+      </Button>
+      <Button 
+       size="small"
+       onClick={handleSelectButton}
+       sx={{
+         color: '#fdf0d5',
+         '&:hover':{
+           backgroundColor: '#669bbc'
+         } 
+       }}
+     >Select</Button>
    </CardActions>
  </Card>
     ) : (
