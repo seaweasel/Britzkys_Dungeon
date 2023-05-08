@@ -104,7 +104,7 @@ const cancelUpdateName = () => {
   }
 
   const handleSelectButton = () => {
-    navigate('/charactersheet/${character.id}')
+    navigate(`/charactersheet/${character.id}`)
   }
 
   return (
@@ -153,7 +153,7 @@ const cancelUpdateName = () => {
          } 
        }}
       >
-      Change Name
+      Name
       </Button>
       <Button 
        size="small"
@@ -165,7 +165,7 @@ const cancelUpdateName = () => {
          } 
        }}
       >
-      Delete
+      Kill
       </Button>
       <Button 
        size="small"

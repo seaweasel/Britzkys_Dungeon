@@ -89,7 +89,7 @@ export const Classes = () => {
 
 
     const handleAddClass = () => {
-      updateCharacter({ class: classData });
+      updateCharacter({ class: classData, level: 1, experience: 0 });
       openSnackbar(`${classData.name} selected!`, 'success')
       handleCloseClass();
     };
