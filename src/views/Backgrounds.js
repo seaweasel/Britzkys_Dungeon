@@ -6,6 +6,7 @@ import { AddButton } from '../components/AddButton'
 import { useCharacter } from '../context/CharacterContext'
 import { ResponsiveTypography } from '../components/ResponsiveTypography'
 import { SnackbarContext } from '../context/SnackbarContext' 
+import { CustomSlider } from '../components/CustomSlider'
 
 
 export const Backgrounds = () => {
@@ -61,7 +62,8 @@ export const Backgrounds = () => {
     <Box sx={{display: 'flex', justifyContent: 'center'}}>
     <ResponsiveTypography type='title'>Choose your Background</ResponsiveTypography>
     </Box>
-    <Box sx={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 2}}>
+    <Box sx={{width: '100%'}}>
+    <CustomSlider>
     {backgrounds.map((background) => (
       <ImagePaper
       key={background.slug}
@@ -70,6 +72,7 @@ export const Backgrounds = () => {
       onClick={() => handleOpenBackground(background)}
       />
     ))}
+    </CustomSlider>
      </Box>
      <CustomModal
       open={openBackground}

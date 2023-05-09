@@ -21,7 +21,7 @@ export const Classes = () => {
   const [skills, setSkills] = useState([])
   const [classItems, setClassItems] = useState([])
   const [classData, setClassData] = useState(null)
-  const { updateCharacter } = useCharacter()
+  const { updateCharacter, character } = useCharacter()
   const { openSnackbar } = useContext(SnackbarContext)
 
   
@@ -83,22 +83,31 @@ export const Classes = () => {
     setClassData(classes)
     setOpenClass(true)
   }
-    const handleCloseClass = () => {
+  
+  const handleCloseClass = () => {
       setOpenClass(false);
-    }
+  }
 
+  const calculateHP = () => {
+    console.log('con modifier', character.abilityScores.CON.modifier)
+    const hitDie = classData.hit_dice.slice(2);
+    const conModifier = character.abilityScores.CON.modifier; // Accessing the Constitution modifier
 
-    const handleAddClass = () => {
-      updateCharacter({ class: classData, level: 1, experience: 0 });
-      openSnackbar(`${classData.name} selected!`, 'success')
-      handleCloseClass();
-    };
+    return parseInt(hitDie, 10) + conModifier;
+  };
+
+  const handleAddClass = () => {
+    const hitPoints = calculateHP()
+    updateCharacter({ class: classData, level: 1, experience: 0, hp: hitPoints });
+    openSnackbar(`${classData.name} selected!`, 'success')
+    handleCloseClass();
+  };
   return (
     <>
     <CenteredBox>
       <ResponsiveTypography type='title'>Choose your Class</ResponsiveTypography>
     </CenteredBox>
-    <Box sx={{ width: '100%', height: '500px', overflow: 'hidden' }}>
+    <Box sx={{ width: '100%'}}>
       <CustomSlider>
       {classItems.map((classItem) => (
         <ImagePaper

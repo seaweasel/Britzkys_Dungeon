@@ -4,7 +4,6 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import { useCharacter } from '../context/CharacterContext';
 import { doc, deleteDoc } from 'firebase/firestore';
 import { db } from '../utils/firebase';
@@ -12,6 +11,7 @@ import { useAuth } from '../context/AuthContext';
 import { UpdateCharacter } from '../views/UpdateCharacter';
 import ImagePaper from './ImagePaper';
 import { useNavigate } from 'react-router-dom';
+import { ResponsiveTypography } from './ResponsiveTypography';
 
 export default function CharacterCards({character}) {
   const { authUser } = useAuth()
@@ -119,25 +119,34 @@ const cancelUpdateName = () => {
      title={character.name}
    />
    <CardContent>
-     <Typography gutterBottom variant="h6">
+     <ResponsiveTypography gutterBottom type="title">
        {character.name}
-     </Typography>
-     <Typography variant="body2">
+     </ResponsiveTypography>
+     <ResponsiveTypography>
        Race: {character.race}
-     </Typography>
-     <Typography variant="body2">
+     </ResponsiveTypography>
+     <ResponsiveTypography>
+      Level: {character.level}
+     </ResponsiveTypography>
+     <ResponsiveTypography>
+      Exp: {character.experience}
+     </ResponsiveTypography>
+     <ResponsiveTypography>
        Class: {character.class.name}
-     </Typography>
-     <Typography variant="body2">
+     </ResponsiveTypography>
+     <ResponsiveTypography>
+      HP: {character.hp}
+     </ResponsiveTypography>
+     <ResponsiveTypography>
        Alignment: {character.alignment.name}
-     </Typography>
-     <Typography variant="body2">
+     </ResponsiveTypography>
+     <ResponsiveTypography >
        Backgorund: {character.background.name}
-     </Typography>
+     </ResponsiveTypography>
      {abilityScoresArray.map((abilityScore) => (
-       <Typography key={abilityScore.name} variant="body2">
+       <ResponsiveTypography key={abilityScore.name}>
          {abilityScore.name}: {abilityScore.score} (Modifier: {abilityScore.modifier})
-       </Typography>
+       </ResponsiveTypography>
      ))}
    </CardContent>
    <CardActions>
