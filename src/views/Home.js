@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { Typography, Box, Paper, Button,CircularProgress} from '@mui/material'
-import ImagePaper from '../components/ImagePaper'
 import { ResponsiveTypography } from '../components/ResponsiveTypography'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom'
 import { auth } from '../utils/firebase';
+import { Image } from '../components/Image'
 
 
 
@@ -66,7 +66,7 @@ useEffect(() => {
         justifyContent: 'center'
       }}
     >
-      <ImagePaper
+      <Image
         src={'./images/home.jpg'} 
         sx={{
           width: {
@@ -75,9 +75,8 @@ useEffect(() => {
           },
           height: {
             xs: 350,
-            md: 700
+            md: 500
           },
-          objectFit: 'cover',
         }}
         />
     </Box>
