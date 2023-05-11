@@ -18,15 +18,23 @@ export const useCharacterData = (userId, characterId = null) => {
                 try {
                     //refrence the character document
                     const characterRef = doc(db, "users", userId, "characters", characterId)
-    
-                    //fetch character data
-                    const characterSnap = await getDoc(characterRef)
-    
-                    if (characterSnap.exists()) {
-                        setCharacterData(characterSnap.data())
-                    } else {
-                        console.log( "No character found with the provided ID")
-                        setError(new Error("No character found with the provided ID"))
+
+                    //set up a real-time listener
+                    const unsubscribe = onSnapshot(
+                        characterRef,
+                        (docSnapshot) => {
+                            setLoading(false)
+                            setCharacterData(docSnapshot.data())
+                        },
+                        (error) => {
+                            setLoading(false)
+                            setError(error)
+                        }
+                    )
+
+                    //clean up listener on component unmount
+                    return () => {
+                        unsubscribe()
                     }
                 } catch (error) {
                     console.error('Error fetching character data:', error)
@@ -36,8 +44,9 @@ export const useCharacterData = (userId, characterId = null) => {
                 }
             } else {
             //fetch all characters
+            const userRef = doc(db, 'users', userId)
             const characterQuery = query(
-                collection(db, 'users', userId, 'characters'),
+                collection(userRef, 'characters'),
             );
     
             const unsubscribe = onSnapshot(

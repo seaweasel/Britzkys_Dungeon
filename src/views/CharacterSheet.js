@@ -36,7 +36,7 @@ export const CharacterSheet = () => {
     const handleAddExperience = async () => {
         const newExperience = parseInt(exp) + characterData.experience
         try {
-            const characterRef = doc(db, 'usuers', userId, 'characters', characterId)
+            const characterRef = doc(db, 'users', userId, 'characters', characterId)
             await updateDoc(characterRef, {
                 experience: newExperience
             })
@@ -49,7 +49,7 @@ export const CharacterSheet = () => {
   return <>
     <Grid container spacing={2}>
         {/* Header Grid */}
-        <Grid item xs={12}>
+        <Grid item xs={12} >
             <Grid container justifyContent="space-between" alignItems="center" spacing={2}>
                 {/* Left Subgrid */}
                 <Grid item xs={12} md={6}>
@@ -76,6 +76,7 @@ export const CharacterSheet = () => {
                             type="number"
                             value={exp}
                             onChange ={(e) => setExp(e.target.value)}
+                            key={characterData.experience}
                         />
                         <Button
                             variant="contained"
@@ -89,7 +90,9 @@ export const CharacterSheet = () => {
                 </Grid>
                 {/* Right Subgrid */}
                 <Grid item xs={12} md={6}>
-                    <ResponsiveTypography>Level{characterData.level}{characterData.class.name}</ResponsiveTypography>
+                    <ResponsiveTypography>Level: {characterData.level}</ResponsiveTypography>
+                    <ResponsiveTypography>Class: {characterData.class.name}</ResponsiveTypography>
+                    <ResponsiveTypography>Race: {characterData.race}</ResponsiveTypography>
                 </Grid>
             </Grid>
         </Grid>
