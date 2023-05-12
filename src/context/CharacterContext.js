@@ -6,7 +6,7 @@ const CharacterContext = createContext()
 
 export const CharacterProvider = ({children}) => {
     const { authUser } = useAuth()
-    const userId = authUser?.userId
+    const userId = authUser?.uid
     const [character, setCharacter] = useState({})
     const [characterId, setCharacterId] = useState(null)
     const [ baseAbilityScores, setBaseAbilityScores] = useState({})

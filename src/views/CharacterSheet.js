@@ -47,30 +47,17 @@ export const CharacterSheet = () => {
     }
 
   return <>
-    <Grid container spacing={2}>
+  <Box sx={{display: 'flex', justifyContent: 'center', minHeight: 'auto', paddingTop: 4,}}>
+    <Grid container spacing={2} padding={2} maxWidth={1620} minWidth={320}>
         {/* Header Grid */}
         <Grid item xs={12} >
-            <Grid container justifyContent="space-between" alignItems="center" spacing={2}>
+            <Grid container justifyContent="space-between" alignItems="stretch" spacing={2} >
                 {/* Left Subgrid */}
                 <Grid item xs={12} md={6}>
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-
-                      }}
-                    >
-                    <ResponsiveTypography type='title' gutterbottom>
-                        {characterData.name}
-                    </ResponsiveTypography>
-                    </Box>
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        justifyContent: 'space-around'
-                      }}
-                    >
+                    <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, height: '100%', marginTop: 'auto', border: '2px solid black', padding: 1}}>
+                        <ResponsiveTypography type='title' gutterbottom>
+                            {characterData.name}
+                        </ResponsiveTypography>
                         <TextField
                             label="Add Experience"
                             type="number"
@@ -84,18 +71,23 @@ export const CharacterSheet = () => {
                             onClick={handleAddExperience}
                         >
                             Submit
-                        </Button>                    
-                    </Box>
-                    <ResponsiveTypography>Total Exp: {characterData.experience}</ResponsiveTypography>
+                        </Button> 
+                    </Box>                      
                 </Grid>
                 {/* Right Subgrid */}
                 <Grid item xs={12} md={6}>
-                    <ResponsiveTypography>Level: {characterData.level}</ResponsiveTypography>
-                    <ResponsiveTypography>Class: {characterData.class.name}</ResponsiveTypography>
-                    <ResponsiveTypography>Race: {characterData.race}</ResponsiveTypography>
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', height: '100%', border: '2px solid black', padding: 1, gap: 15, margin: 'auto' }}>
+                        <ResponsiveTypography>Level: {characterData.level}</ResponsiveTypography>
+                        <ResponsiveTypography>Class: {characterData.class.name}</ResponsiveTypography>
+                        <ResponsiveTypography>Race: {characterData.race}</ResponsiveTypography>
+                        <ResponsiveTypography>Alignment: {characterData.alignment.name}</ResponsiveTypography>
+                        <ResponsiveTypography>Background: {characterData.background.name}</ResponsiveTypography>
+                        <ResponsiveTypography>Total Exp: {characterData.experience}</ResponsiveTypography>
+                    </Box>
                 </Grid>
             </Grid>
         </Grid>
     </Grid>
+  </Box>
   </>
 }
