@@ -14,7 +14,17 @@ export const ResponsiveTypography = ({ type = 'basic', ...props }) => {
         return isXs || isSm ? 'body2' : 'body1'
     }
 
+    const getStyle = () => {
+      if (type === 'background'){
+        return {
+          backgroundColor: 'rgba(0, 0, 0, 0.4)',
+          padding: 5,
+          borderRadius: 10
+        }
+      }
+    }
+
   return (
-    <Typography variant={getVariant()} {...props} />
+    <Typography variant={getVariant()} style={getStyle()} {...props} />
   )
 }

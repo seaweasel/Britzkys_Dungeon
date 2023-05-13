@@ -1,7 +1,11 @@
 import React from 'react'
-import { Paper } from '@mui/material'
+import { Paper, Box, Typography } from '@mui/material'
+import { ResponsiveTypography } from './ResponsiveTypography'
 
-export const Image = ({src, alt, sx}) => {
+
+export const Image = ({type, slug, alt, sx, title}) => {
+  const imageUrl = `/images/${type}/${slug}.jpg`
+
   return <>
     <Paper
       elevation={24}
@@ -18,17 +22,29 @@ export const Image = ({src, alt, sx}) => {
         alignItems: 'center',
       }}
     >
-        <div
-          style={{
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
-            background: `url(${src}) no-repeat center`,
-            backgroundSize: '100% 100%',
-          }}
-        ></div>
+      <img
+        src={imageUrl}
+        alt={alt}
+        style={{
+          maxWidth: '100%',
+          maxHeight: '100%',
+          objectFit: 'contain',
+        }}
+      />
+    <Box
+      sx={{
+        position: 'absolute',
+        backgroundColor: title? 'rgba(0, 0, 0, 0.4)' : 'none',
+        padding: '4px 8px',
+        right: 0,
+        left: 0,
+        bottom: 0,
+      }}
+    >
+      <Typography align="center" fontSize={14}>
+        {title}
+      </Typography>
+    </Box>
     </Paper>
   </>
 }
