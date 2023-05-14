@@ -23,14 +23,13 @@ export const Image = ({type, slug, alt, sx, title}) => {
       }}
     >
       <img
-        src={imageUrl}
-        alt={alt}
-        style={{
-          maxWidth: '100%',
-          maxHeight: '100%',
-          objectFit: 'contain',
-        }}
-      />
+          src={imageUrl}
+          alt={alt}
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+        />     
     <Box
       sx={{
         position: 'absolute',

@@ -66,12 +66,16 @@ useEffect(() => {
         justifyContent: 'center'
       }}
     >
+      <Box sx={{ display: 'flex', justifyContent: 'center'}}
+      >
       <Image
         src={'./images/home.jpg'} 
+        type={'home'}
+        slug={'home'}
         sx={{
           width: {
             xs: 350,
-            md: 900
+            md: 800
           },
           height: {
             xs: 350,
@@ -79,6 +83,7 @@ useEffect(() => {
           },
         }}
         />
+      </Box>
     </Box>
     <Box
     sx={{

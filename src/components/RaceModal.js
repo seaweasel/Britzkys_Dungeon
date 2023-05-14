@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { Table, TableBody, TableRow, TableCell, Box } from '@mui/material';
+import { Box } from '@mui/material';
 import { getRaceImage } from '../utils/getImage';
 import ImagePaper from './ImagePaper'
 import TraitAccordions from './TraitAccordions';
@@ -7,8 +7,8 @@ import { CenteredColumn } from './CustomBoxes';
 import { CustomModal } from './CustomModal';
 import{ useCharacter } from '../context/CharacterContext'
 import { AddButton } from './AddButton';
-import { ResponsiveTypography } from './ResponsiveTypography';
 import { SnackbarContext } from '../context/SnackbarContext';
+import { RaceTable } from './RaceTable';
 
 export default function RaceModal({ race, url, fetchRaceInfo, fetchTraitInfo }) {
     const [open, setOpen] = useState(false);
@@ -110,66 +110,7 @@ export default function RaceModal({ race, url, fetchRaceInfo, fetchTraitInfo }) 
           aria-describedby="race-modal-description"
         >
           {raceInfo && (
-            <div> 
-              <ResponsiveTypography>
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
-              >
-              <Table 
-                aria-label={`{race.toLowerCase()}-info`} 
-              >
-                <TableBody>
-                  {raceInfoItems.map((item, index) => (
-                    <TableRow key={index}>
-                      <TableCell component="th" scope="row" align="center">
-                        <Box
-                        sx={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          alignItems: 'center'
-
-                        }}
-                        >
-                        <ResponsiveTypography type="title">{item.key}:</ResponsiveTypography>
-                        </Box>
-                      <ResponsiveTypography>
-                        {Array.isArray(item.value) ? (
-                          <ul style={{textDecoration: 'none'}}>
-                            {item.value.map((subitem, i) => {
-                              if (subitem.name && subitem.bonus) {
-                                return (
-                                  <li key={i} style={{ listStyleType: 'none' }}>
-                                  <ResponsiveTypography>
-                                    {subitem.name} increases by {subitem.bonus}
-                                    </ResponsiveTypography> 
-                                  </li>
-                                );
-                              } else {
-                                return<li key={i} style={{ listStyleType: 'none' }}>
-
-                                  <ResponsiveTypography>
-                                    {subitem}
-                                  </ResponsiveTypography> 
-                                  </li>
-                                    }
-                                  })}
-                                </ul>
-                              ) : (
-                                item.value
-                              )}
-                              </ResponsiveTypography>
-                            </TableCell>
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                  </Box>  
-                </ResponsiveTypography>
-              </div>
+            <RaceTable raceInfoItems={raceInfoItems} />
             )}
               <Box
                 sx={{
