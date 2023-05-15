@@ -1,6 +1,5 @@
 import React from 'react'
 import { Paper, Box, Typography } from '@mui/material'
-import { ResponsiveTypography } from './ResponsiveTypography'
 
 
 export const Image = ({type, slug, alt, sx, title}) => {

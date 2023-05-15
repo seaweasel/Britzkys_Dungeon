@@ -5,6 +5,7 @@ import { CustomCloseButton } from './CustomCloseButton';
 import { StyledModalBox } from './CustomBoxes';
 import { ResponsiveTypography } from './ResponsiveTypography';
 import ImagePaper from './ImagePaper';
+import { AddButton } from './AddButton';
 
 export const CustomModal = ({
     open,
@@ -14,6 +15,8 @@ export const CustomModal = ({
     children,
     title,
     image,
+    buttonName, 
+    buttonOnClick
 }) => {
 
   return (
@@ -69,6 +72,24 @@ export const CustomModal = ({
               </Box>
           )}
             {children}
+        </Box>
+        <Box                
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            position: 'sticky',
+            bottom: 0,
+            padding: '1em',
+            borderTop: '2px solid black',
+            backgroundImage: `
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+            url(/images/modal-background.jpg)`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}>
+          <AddButton onClick={buttonOnClick} style={{ marginTop: '2em', display: 'flex', flexDirection: 'column' }}>{buttonName}</AddButton>
         </Box>
     </Dialog>
   )
