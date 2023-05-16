@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Races from './Races'
-import { Classes } from './Classes'
+import { ClassesModal } from '../components/ClassesModal' 
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import { AbilityScores } from './AbilityScores'
@@ -77,7 +77,7 @@ export const NewCharacter = () => {
     { label: 'Character Name', component: () => <CharacterName /> },
     { label: 'Ability Scores', component: () => <AbilityScores /> },
     { label: 'Race', component: () => <Races /> },
-    { label: 'Class', component: () => <Classes /> },
+    { label: 'Class', component: () => <ClassesModal /> },
     { label: 'Alignment', component: () => <AlignmentTable /> },
     { label: 'Background', component: () => <Backgrounds /> },
   ];
