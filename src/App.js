@@ -1,7 +1,5 @@
-import Races from './views/Races'
 import SignIn from './views/SignIn';
 import SignUp  from './views/SignUp';
-import { Classes } from './views/Classes';
 import { ViewCharacters } from './views/ViewCharacters';
 import { Home } from './views/Home'
 import { CssBaseline } from '@mui/material';
@@ -11,9 +9,6 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { NewCharacter } from './views/NewCharacter';
 import { CharacterProvider } from './context/CharacterContext';
-import { Backgrounds } from './views/Backgrounds';
-import { AbilityScores } from './views/AbilityScores';
-import AlignmentTable from './views/AlignmentTable'; 
 import combinedTheme from './theme/theme';
 import { UpdateCharacter } from './views/UpdateCharacter';
 import { Test } from './views/Test';
@@ -45,11 +40,6 @@ function App() {
                     <Route path="/newcharacter" element={<NewCharacter />} />
                     <Route path="/viewcharacters" element={<ViewCharacters />} />
                     <Route path="/logout" element={<SignIn />} />
-                    <Route path="/races" element={<Races />}  />
-                    <Route path="/classes" element={<Classes />}  />
-                    <Route path="/alignmenttable" element={<AlignmentTable />} />
-                    <Route path="/abilityscores" element={<AbilityScores />} />
-                    <Route path="/backgrounds" element={<Backgrounds />} />
                     <Route path="/updatecharacter" element={<UpdateCharacter />} />
                     <Route path="/charactersheet/:characterId" element={<CharacterSheet />} />
                     <Route path="/test" element={<Test />} />

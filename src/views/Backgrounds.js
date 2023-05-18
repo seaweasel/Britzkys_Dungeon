@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react'
 import ImagePaper from '../components/ImagePaper'
-import { Box, Table, TableBody, TableCell, TableRow } from '@mui/material'
+import { Box } from '@mui/material'
 import { CustomModal } from '../components/CustomModal'
-import { AddButton } from '../components/AddButton'
 import { useCharacter } from '../context/CharacterContext'
 import { ResponsiveTypography } from '../components/ResponsiveTypography'
 import { SnackbarContext } from '../context/SnackbarContext' 
 import { CustomSlider } from '../components/CustomSlider'
+import { BackgroundsTable } from '../components/BackgroundsTable'
 
 
 export const Backgrounds = () => {
@@ -80,69 +80,14 @@ export const Backgrounds = () => {
       background={background}
       image={background && background.img}
       title={background && background.title}
+      buttonName={'Add Background'}
+      buttonOnClick={handleAddBackground}
      >
   {background && (
         <>
-        <div> 
-          <ResponsiveTypography>
-            <Table>
-              <TableBody>
-                <TableRow >
-                  <TableCell component="th" scope="row" align="center">
-                  <ResponsiveTypography type='title'>Description:</ResponsiveTypography>
-                  <ResponsiveTypography>{background.description}</ResponsiveTypography>
-                  </TableCell>
-                </TableRow>
-                <TableRow >
-                  <TableCell component="th" scope="row" align="center">
-                  <ResponsiveTypography type='title'>Skill Proficiencies: </ResponsiveTypography>
-                  <ResponsiveTypography>{background.skillProf}</ResponsiveTypography>
-                  </TableCell>
-                </TableRow>
-                <TableRow >
-                  <TableCell component="th" scope="row" align="center">
-                  <ResponsiveTypography type='title'>Languages:</ResponsiveTypography>
-                  <ResponsiveTypography>{background.languages}</ResponsiveTypography>
-                  </TableCell>
-                </TableRow>
-                <TableRow >
-                  <TableCell component="th" scope="row" align="center">
-                  <ResponsiveTypography type='title'>Features:</ResponsiveTypography>
-                  <ResponsiveTypography>{background.feature}</ResponsiveTypography>
-                  </TableCell>
-                </TableRow>
-                <TableRow >
-                  <TableCell component="th" scope="row" align="center">
-                  <ResponsiveTypography type='title'>Feature Description:</ResponsiveTypography>
-                  <ResponsiveTypography>{background.featureDescription}</ResponsiveTypography>
-                  </TableCell>
-                </TableRow>
-            </TableBody>
-          </Table>
-          </ResponsiveTypography>
-        </div>
+          <BackgroundsTable background={background} />
         </>
          )}
-              <Box
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  position: 'sticky',
-                  bottom: 0,
-                  padding: '1em',
-                  borderTop: '2px solid black',
-                  backgroundImage: `
-                  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                  url(/images/modal-background.jpg)`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                }}
-              >          <AddButton onClick={handleAddBackground} style={{ marginTop: '2em', display: 'flex', flexDirection: 'column' }}>
-            Choose
-          </AddButton>
-        </Box>
         </CustomModal>
   
     </>
