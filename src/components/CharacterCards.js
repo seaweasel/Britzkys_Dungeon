@@ -188,7 +188,7 @@ const cancelUpdateName = () => {
       >
       Back
       </Button>
-      <Button 
+      {/* <Button 
        size="small"
        onClick={handleSelectButton}
        sx={{
@@ -197,7 +197,8 @@ const cancelUpdateName = () => {
            backgroundColor: '#669bbc'
          } 
        }}
-     >Select</Button>
+       disabled={true}
+     >Select</Button> */}
    </CardActions>
  </Card>
     ) : (
